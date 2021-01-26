@@ -53,14 +53,15 @@ body { background:#F1C40F url(img/bg-noise-orange.png); }
       <div id="names" class="inbox"><textarea name="namesbox" id="namesbox"></textarea></div>
 
       <select name="prizes" id="prizes">
-        <option value="Sepeda">Sepeda</option>
         <option value="Kipas Angin">Kipas Angin</option>
         <option value="Kompor Gas">Kompor Gas</option>
         <option value="Dispenser">Dispenser</option>
         <option value="Rice Cooker">Rice Cooker</option>
-        <option value="Kulkas">Kulkas</option>
-        <option value="TV 32 inch">TV 32 inch</option>
-        <option value="Mesin Cuci">Mesin Cuci</option>
+        <option value="Sepeda">Sepeda (Bupati)</option>
+        <option value="Sepeda">Sepeda (Wakil Bupati)</option>
+        <option value="Kulkas">Kulkas (Sekda)</option>
+        <option value="TV 32 inch">TV 32 inch (Korpri)</option>
+        <option value="Mesin Cuci">Mesin Cuci (Koperasi)</option>
       </select>
 
 
@@ -391,12 +392,14 @@ function standout(text){
         $('#result1').removeClass('name');
         $('.name').animate({opacity: .25});
         $('#result1').animate({height: '+=130px'});
-        $('#result1').append('<div class="extra"><a class="small alert button" href="#" onClick="removevictim();">Hapus dan masukkan ke daftar pemenang</a></div><div class="extra"><a class="small button" href="#" onClick="addToWinnerList();">Masukkan ke daftar pemenang</a></div>');
+        $('#result1').append('<div class="extra"><a class="small alert button" href="#" onClick="removevictim();">Hapus</a></div>');
         $('#go').removeAttr('disabled','disabled');
         $('#list').removeAttr('disabled','disabled');
         $('#save').removeAttr('disabled','disabled');
         $('#headline').text('Pemenang Hadiah ' + $('#prizes').find(":selected").text() + "!");
         $('#headline').slideDown();
+
+        addToWinnerList();
 }
 
 function removevictim(){
@@ -420,7 +423,7 @@ function removevictim(){
   $("div").remove(".extra");
   $('#headline').text('OK, done! Let\'s see who is next? Just click "GO!" button for next roll.');
 
-  addToWinnerList();
+  //addToWinnerList();
 }
 
 function addToWinnerList(){
@@ -434,13 +437,13 @@ function addToWinnerList(){
   
 	$('#winnerbox').val("");
   $('#winnerbox').val(winnerUpdated);
-  $('#result1').html("Removed");
-  $('#result1').fadeOut(1000, function(){
-    $("div").remove("#result1");
-  });
-  $("div").remove(".name");
-  $("div").remove(".extra");
-  $('#headline').text( $('#headline').text() + '\nAdded to winner list.');
+  //$('#result1').html("Removed");
+  //$('#result1').fadeOut(1000, function(){
+  //  $("div").remove("#result1");
+  //});
+  //$("div").remove(".name");
+  //$("div").remove(".extra");
+  //$('#headline').text( $('#headline').text() + '\nAdded to winner list.');
 }
 
 </script>

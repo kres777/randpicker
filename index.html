@@ -216,7 +216,7 @@ tr:nth-child(even) {
             </div>
           </div>
 
-          <center>
+          <center style="padding-bottom:30px">
             <select name="prizes" id="prizes" onchange="showCategory();" onfocus="this.selectedIndex = 0;" style="width: 600px;">
               <option value="" selected>Pilih Undian</option>
               <option value="utama">UNDIAN UTAMA</option>
@@ -224,7 +224,7 @@ tr:nth-child(even) {
             </select>
           </center>
 
-          <center style="margin-top:10px"><button class="success button" style="width:600px" id="go" onclick="go();">Mulai!</button></center>
+          <!-- <center style="margin-top:10px"><button class="success button" style="width:600px" id="go" onclick="go();">Mulai!</button></center> -->
 
       </div> <!--popdown-->
 
@@ -314,6 +314,10 @@ function showCategory(){
         prizes[i].style.display = "none";
       }
     }
+  }else{
+    for(var i = 0; i < prizes.length; i++){
+      prizes[i].style.display = "block";
+    }
   }
 }
 
@@ -358,7 +362,7 @@ function namelist(){
         // $("#prizes").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
-        $('#go').hide();
+        // $('#go').hide();
         // $("#print").hide();
 }
 function hadiahlist(){
@@ -371,7 +375,7 @@ function hadiahlist(){
         $("#names").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
-        $('#go').show();
+        // $('#go').show();
 
         // $("#print").hide();
 }
@@ -385,7 +389,7 @@ function pemenang(){
         $("#names").hide();
         $("#winner").show();
         $('body').css({"overflow-y": "visible"});
-        $('#go').show();
+        // $('#go').show();
         // $("#print").show();
 }
 
@@ -403,7 +407,7 @@ function go(){
   }
   $("#varnote").hide();
   $('body').css({"overflow-y": "hidden"});
-  $('#go').attr('disabled','disabled');
+  // $('#go').attr('disabled','disabled');
   $('#list').attr('disabled','disabled');
   $('#save').attr('disabled','disabled');
   $('#headline').slideUp();
@@ -469,11 +473,19 @@ function go(){
 
 // does the actual animation
 function acak(index){
+
+  var categorySelected = $('#prizes').val();
+  console.log(categorySelected);
+  if(categorySelected == ""){
+    alert("pilih Kategori Undian.");
+    return;
+  }
+
   window.scrollTo(0, 0);
   clickedPrize = index;
   $("#varnote").hide();
   $('body').css({"overflow-y": "hidden"});
-  $('#go').attr('disabled','disabled');
+  // $('#go').attr('disabled','disabled');
   $('#list').attr('disabled','disabled');
   $('#save').attr('disabled','disabled');
   $('#headline').slideUp();
@@ -537,7 +549,7 @@ function standout(text){
         $('.name').animate({opacity: .25});
         $('#result1').animate({height: '+=130px'});
         $('#result1').append('<div class="extra"><a class="alert button" href="#" onClick="removevictim();">Hapus</a></div>');
-        $('#go').removeAttr('disabled','disabled');
+        // $('#go').removeAttr('disabled','disabled');
         $('#list').removeAttr('disabled','disabled');
         $('#save').removeAttr('disabled','disabled');
         $('#headline').text('Pemenang Hadiah ' + document.querySelectorAll(".card")[clickedPrize].getElementsByClassName("nombreProd")[0].innerText);

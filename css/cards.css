@@ -97,7 +97,7 @@ body ul, body li {
   align-items: center;
   justify-content: center;
   align-content: center;
-  height: 80px;
+  height: 90px;
   padding-top: 20px;
   box-sizing: border-box;
 }
@@ -122,7 +122,7 @@ body ul, body li {
   }
 .contenedorCards .card .wrapper .infoProd .extraInfo {
   text-overflow: ellipsis;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
 }
 .contenedorCards .card .wrapper .infoProd .actions {

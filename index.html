@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/cards.css">
   <script src="js/vendor/custom.modernizr.js"></script>
   <script src="js/jquery-latest.min.js"></script>
+  <script src="js/anggota.js"></script>
 
 <style>
 #values { position:relative;font-size:400%;text-align:center;margin: 0 auto;z-index:0; }
@@ -245,18 +246,14 @@ tr:nth-child(even) {
   
 <script>
 var text;
-var names = new Array('Barbara McFell',
-                      'Tempo McKeteketly',
-                      'Maonga Irpaae',
-                      'Jose Tunisia',
-                      );
+var names = getDoorprizeMembers();
 
 var winnerList = new Array();
 var clickedPrize = -1;
 
 function reset(){
   // re-enable go button
-  setTimeout("$('#go').removeAttr('disabled')",11005);
+  // setTimeout("$('#go').removeAttr('disabled')",11005);
   var namesbreak = "";
   if(gup('names') != ""){
     var names = gup('names');
@@ -264,13 +261,26 @@ function reset(){
     namesbreak = namesbreak.replace(/%20/g,' ');          
     }
     else   {
-      var names = new Array('Barbara McFell',
-                      'Tempo McKeteketly',
-                      'Maonga Irpaae',
-                      'Jose Tunisia',
-                      'Bambang',
-                      'Jono',
-                      );
+      var names = getDoorprizeMembers();
+    for(var i in names){
+      name = names[i];
+      if (name == "" || typeof(name) == undefined){}else{
+         namesbreak = namesbreak + name + "\n";
+      }
+    }
+  }
+  $("#namesbox").val(namesbreak);
+}
+
+function setMembersToAll(){
+  var namesbreak = "";
+  if(gup('names') != ""){
+    var names = gup('names');
+    namesbreak = names.replace(/101/g,'\n');
+    namesbreak = namesbreak.replace(/%20/g,' ');          
+    }
+    else   {
+      var names = getAllMembers();
     for(var i in names){
       name = names[i];
       if (name == "" || typeof(name) == undefined){}else{
@@ -282,10 +292,12 @@ function reset(){
 }
 
 function showCategory(){
+
   var categorySelected = $('#prizes').val();
 
   const prizes = document.querySelectorAll(".card");
   if(categorySelected == "utama"){
+    setMembersToAll();
     for(var i = 0; i < prizes.length; i++){
       if(i < 6){
         prizes[i].style.display = "block";
@@ -294,6 +306,7 @@ function showCategory(){
       }
     }
   }else if(categorySelected == "doorprize"){
+    reset();
     for(var i = 0; i < prizes.length; i++){
       if(i >= 6){
         prizes[i].style.display = "block";
@@ -456,6 +469,7 @@ function go(){
 
 // does the actual animation
 function acak(index){
+  window.scrollTo(0, 0);
   clickedPrize = index;
   $("#varnote").hide();
   $('body').css({"overflow-y": "hidden"});

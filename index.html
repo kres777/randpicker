@@ -45,24 +45,26 @@ tr:nth-child(even) {
 <body onload="reset();">
 
   <div class="full-head" style="width:100%;background:#111 url(img/header-bg.png) repeat-x center top;border-bottom:1px solid #D35400;">
-	<div class="row">
-		<div class="large-12 columns" style="padding-top:50px;background:#111 url(img/header-bg.png) repeat-x center top;z-index:20;">
-		<ul class="button-group even-4">
-      <!--<li><a href="index.html" class="alert button" id="reset">Reset</a></li>-->
-			<li><button class="button" id="list" onclick="namelist();">Daftar Nama</button></li>
-			<!--<li><button class="button" id="save" onclick="save();">Save &amp; Update</button></li>-->
-			<li><button class="button" id="price" onclick="hadiahlist();">Daftar Hadiah</button></li>
-			<!-- <li><button class="success button" id="go" onclick="go();">Mulai!</button></li> -->
-			<li><button class="button" id="pemenang" onclick="pemenang();">Undian</button></li>
-    </ul>
-		</div>
-	</div>
+	<center>
+    <div class="row">
+      <div class="large-12 columns" style="padding-top:50px;background:#111 url(img/header-bg.png) repeat-x center top;z-index:20;">
+        <ul class="button-group even-2">
+          <!--<li><a href="index.html" class="alert button" id="reset">Reset</a></li>-->
+          <li><button class="button" id="list" onclick="namelist();">Daftar Nama</button></li>
+          <!--<li><button class="button" id="save" onclick="save();">Save &amp; Update</button></li>-->
+          <!-- <li><button class="button" id="price" onclick="hadiahlist();">Daftar Hadiah</button></li> -->
+          <!-- <li><button class="success button" id="go" onclick="go();">Mulai!</button></li> -->
+          <li><button class="button" id="pemenang" onclick="pemenang();">Undian</button></li>
+        </ul>
+      </div>
+	  </div>
+  </center>
 	</div>
 
 	<div class="row">
 		<div class="large-12 columns">
 			<h3 style="text-align:center;margin-top:30px;" id="headline">Let's see who is The Lucky One?</h3>
-      <button type="button" id="print" style="display: none;" onclick="doPrint()">PRINT BUOSSSSSHHHHHHH!</button>
+      <button class="small success button" type="button" id="print" style="display: none; margin-bottom: 6px;" onclick="doPrint()"><i class="fa fa-file"></i> Cetak</button>
 			
 			<div id="varnote"><img src="img/logo.png"><div class="copyright">&copy; Coded by <strong>Heiswayi Nrird</strong>, June 2013</div></div>
 			
@@ -72,25 +74,32 @@ tr:nth-child(even) {
 
           <!-- <div id="winner" class="inbox"><textarea name="winnerbox" id="winnerbox"></textarea></div> -->
           <div id="winner" class="inbox">
-            <table id="winnerTable">
-              <tr>
-                <th style="width:47%">Anggota</th>
-                <th style="width:47%">Hadiah</th>
-                <th style="width:6%">Aksi</th>
-              </tr>
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:47%">Anggota</th>
+                  <th style="width:47%">Hadiah</th>
+                  <th style="width:6%">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="winnerTable">
+
+              </tbody>
               
             </table>
           </div>
 
 
-          <select name="prizes" id="prizes" style="margin-top:30px">
+          <select name="prizes" id="prizes" style="margin-top:30px;">
+            <option value="" selected>Pilih Undian</option>
+            <option value="Line1">=====UNDIAN UTAMA=====</option>
             <option value="Sepeda Motor Honda Beat">Sepeda Motor Honda Beat</option>
             <option value="Sepeda I">Sepeda I</option>
             <option value="Sepeda II">Sepeda II</option>
             <option value="Sepeda III">Sepeda III</option>
             <option value="Kulkas">Kulkas</option>
             <option value="TV LED">TV LED</option>
-            <option value="Line">============</option>
+            <option value="Line2">=====DOORPIZE=====</option>
             <option value="Kompor Gas">Kompor Gas</option>
             <option value="Magic Com">Magic Com</option>
             <option value="Kipas Angin">Kipas Angin</option>
@@ -122,75 +131,6 @@ var names = new Array('Barbara McFell',
                       'Tempo McKeteketly',
                       'Maonga Irpaae',
                       'Jose Tunisia',
-                      'Bob Bobson',
-                      'Harold Greenoff',
-                      'Jeff Penn',
-                      'Ewan Freedom',
-                      'Benjamin Turkin',
-                      'Robert Harper',
-                      'Sally Cladwell',
-                      'Gregory Tomson',
-                      'Benita Dano',
-                      'Tameka Chea',
-                      'Fernando Guntrum',
-                      'Cody Devita',
-                      'Margery Moloney',
-                      'Jessie Wagar',
-                      'Jessie Burkhard',
-                      'Cody Lamotte',
-                      'Tabatha Cantley',
-                      'Hugh Fullwood',
-                      'Emilia Janusz',
-                      'Erik Taketa',
-                      'Lenore Laughter',
-                      'Kathrine Palazzo',
-                      'Lonnie Garron',
-                      'Tyrone Shott',
-                      'Gay Duble',
-                      'Pearlie Newberg',
-                      'Clinton Rayl',
-                      'Louisa Strey',
-                      'Saundra Ingenito',
-                      'Fernando Jenkin',
-                      'Maricela Tonkin',
-                      'Allie Borjas',
-                      'Clinton Rickenbacker',
-                      'Cody Golay',
-                      'Jerri Tienda',
-                      'Nita Pippen',
-                      'Alejandra Bonhomme',
-                      'Nelson Eguia',
-                      'Rae Velasques',
-                      'Boyce Edeker',
-                      'Cedrick Culotti',
-                      'Elenora Nagindas',
-                      'Arletta Miran',
-                      'Alica Knudsvig',
-                      'Von Ostroot',
-                      'Tomika Nuesca',
-                      'Felton Pattinson',
-                      'Cristopher Laper',
-                      'Shonna Parrotta',
-                      'Sarina Macurdy',
-                      'Waylon Companie',
-                      'Shon Carratura',
-                      'Jae Kneser',
-                      'Janett Papiernik',
-                      'Lynwood Bellar',
-                      'Jeramy Contopoulos',
-                      'Hong Nederostek',
-                      'Gigi Mccarn',
-                      'Sid Mursko',
-                      'Bielser',
-                      'Jospeh Lustberg',
-                      'Spring Luckinbill',
-                      'Ciera Chionchio',
-                      'Marleen Litchard',
-                      'Eldridge Brynga',
-                      'Leif Dinho',
-                      'Gigi Kornblatt',
-                      'Idell Chagollan',
-                      'Michale Mcclod'
                       );
 
 var winnerList = new Array();
@@ -209,75 +149,6 @@ function reset(){
                       'Tempo McKeteketly',
                       'Maonga Irpaae',
                       'Jose Tunisia',
-                      'Bob Bobson',
-                      'Harold Greenoff',
-                      'Jeff Penn',
-                      'Ewan Freedom',
-                      'Benjamin Turkin',
-                      'Robert Harper',
-                      'Sally Cladwell',
-                      'Gregory Tomson',
-                      'Benita Dano',
-                      'Tameka Chea',
-                      'Fernando Guntrum',
-                      'Cody Devita',
-                      'Margery Moloney',
-                      'Jessie Wagar',
-                      'Jessie Burkhard',
-                      'Cody Lamotte',
-                      'Tabatha Cantley',
-                      'Hugh Fullwood',
-                      'Emilia Janusz',
-                      'Erik Taketa',
-                      'Lenore Laughter',
-                      'Kathrine Palazzo',
-                      'Lonnie Garron',
-                      'Tyrone Shott',
-                      'Gay Duble',
-                      'Pearlie Newberg',
-                      'Clinton Rayl',
-                      'Louisa Strey',
-                      'Saundra Ingenito',
-                      'Fernando Jenkin',
-                      'Maricela Tonkin',
-                      'Allie Borjas',
-                      'Clinton Rickenbacker',
-                      'Cody Golay',
-                      'Jerri Tienda',
-                      'Nita Pippen',
-                      'Alejandra Bonhomme',
-                      'Nelson Eguia',
-                      'Rae Velasques',
-                      'Boyce Edeker',
-                      'Cedrick Culotti',
-                      'Elenora Nagindas',
-                      'Arletta Miran',
-                      'Alica Knudsvig',
-                      'Von Ostroot',
-                      'Tomika Nuesca',
-                      'Felton Pattinson',
-                      'Cristopher Laper',
-                      'Shonna Parrotta',
-                      'Sarina Macurdy',
-                      'Waylon Companie',
-                      'Shon Carratura',
-                      'Jae Kneser',
-                      'Janett Papiernik',
-                      'Lynwood Bellar',
-                      'Jeramy Contopoulos',
-                      'Hong Nederostek',
-                      'Gigi Mccarn',
-                      'Sid Mursko',
-                      'Bielser',
-                      'Jospeh Lustberg',
-                      'Spring Luckinbill',
-                      'Ciera Chionchio',
-                      'Marleen Litchard',
-                      'Eldridge Brynga',
-                      'Leif Dinho',
-                      'Gigi Kornblatt',
-                      'Idell Chagollan',
-                      'Michale Mcclod'
                       );
     for(var i in names){
       name = names[i];
@@ -349,7 +220,7 @@ function hadiahlist(){
 function pemenang(){
         $("#varnote").hide();
         $('#namesbox').removeAttr('disabled','disabled');
-        $('#headline').text('Daftar Pemenang');
+        $('#headline').text('Undian RAT Koperasi');
         $("#popdown").show();
         $("#values").hide();
         $("#prizes").show();
@@ -369,6 +240,9 @@ function doPrint(){
 
 // does the actual animation
 function go(){
+  if($("#prizes").val() == ""){
+    return;
+  }
   $("#varnote").hide();
   $('body').css({"overflow-y": "hidden"});
   $('#go').attr('disabled','disabled');
@@ -440,7 +314,7 @@ function standout(text){
         $('#result1').removeClass('name');
         $('.name').animate({opacity: .25});
         $('#result1').animate({height: '+=130px'});
-        $('#result1').append('<div class="extra"><a class="small alert button" href="#" onClick="removevictim();">Hapus</a></div>');
+        $('#result1').append('<div class="extra"><a class="alert button" href="#" onClick="removevictim();">Hapus</a></div>');
         $('#go').removeAttr('disabled','disabled');
         $('#list').removeAttr('disabled','disabled');
         $('#save').removeAttr('disabled','disabled');
@@ -448,6 +322,8 @@ function standout(text){
         $('#headline').slideDown();
 
         addToWinnerList();
+
+        $('#prizes').val("");
 }
 
 function removevictim(){
@@ -472,7 +348,6 @@ function removevictim(){
   $('#headline').text('OK, done! Let\'s see who is next? Just click "GO!" button for next roll.');
 
   //addToWinnerList();
-  console.log("test");
   pemenang();
 }
 
@@ -497,30 +372,39 @@ function addToWinnerListText(){
 }
 
 function addToWinnerList(){
-  winnerList.pop({
+  winnerList.unshift({
     'name' : text,
     'prize' : $('#prizes').find(":selected").text()
   });
 
-  console.log(winnerList);
-  renderTable(text, $('#prizes').find(":selected").text());
+  renderTable();
 }
 
-function renderTable(nama, hadiah){
+function renderTable(){
+  $("#winnerTable tr").remove(); 
+
   var table = document.getElementById("winnerTable");
-  var row = table.insertRow(1);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  cell1.innerHTML = nama;
-  cell2.innerHTML = hadiah;
-  cell3.innerHTML = '<button onclick="deleteWinner()"><i class="fa fa-trash"></i></button>';
+  var iter = 0;
+  winnerList.forEach(element => {
+    console.log("name: " + element.name);
+    var row = table.insertRow(iter);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = element.name;
+    cell2.innerHTML = element.prize;
+    cell3.innerHTML = '<button onclick="deleteWinner(' + iter + ')"><i class="fa fa-trash"></i></button>';
+
+    iter++;
+  });
 }
 
 function deleteWinner(index){
   winnerList.splice(index, 1);
   var table = document.getElementById("winnerTable");
   table.deleteRow(index);
+
+  renderTable();
 }
 
 </script>

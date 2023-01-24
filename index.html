@@ -83,6 +83,11 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">SEPEDA MOTOR HONDA BEAT</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(0)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -93,6 +98,11 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">SEPEDA LIPAT</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(1)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -103,6 +113,11 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">Sepeda Gunung</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(2)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,6 +128,11 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">Sepeda Gunung</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(3)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -123,6 +143,11 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">Kulkas</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(4)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -133,6 +158,57 @@ tr:nth-child(even) {
                   <div class="infoProd">
                     <p class="nombreProd">TV LED</p>
                     <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(5)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="wrapper">
+                  <div class="colorProd" style="background-color: #1b6f44;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/kompor_gas.png');"></div>
+                  <div class="infoProd">
+                    <p class="nombreProd">KOMPOR GAS</p>
+                    <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(6)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="wrapper">
+                  <div class="colorProd" style="background-color: #6247aa;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/magic_com.png');"></div>
+                  <div class="infoProd">
+                    <p class="nombreProd">MAGIC COM</p>
+                    <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(7)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="wrapper">
+                  <div class="colorProd" style="background-color: #5369bf;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/kipas.png');"></div>
+                  <div class="infoProd">
+                    <p class="nombreProd">KIPAS ANGIN</p>
+                    <p class="extraInfo">????</p>
+                    <div class="actions">
+                      <div class="bakuretsu_icono action aFavs" onclick="acak(8)">
+                        <i class="fa fa-play"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,19 +216,10 @@ tr:nth-child(even) {
           </div>
 
           <center>
-            <select name="prizes" id="prizes" style="width: 600px;">
+            <select name="prizes" id="prizes" onchange="showCategory();" onfocus="this.selectedIndex = 0;" style="width: 600px;">
               <option value="" selected>Pilih Undian</option>
-              <option value="">=====UNDIAN UTAMA=====</option>
-              <option value="Sepeda Motor Honda Beat">Sepeda Motor Honda Beat</option>
-              <option value="Sepeda Lipat">Sepeda Lipat</option>
-              <option value="Sepeda MTB">Sepeda MTB</option>
-              <option value="Sepeda MTB">Sepeda MTB</option>
-              <option value="Kulkas">Kulkas</option>
-              <option value="TV LED">TV LED</option>
-              <option value="">=====DOORPIZE=====</option>
-              <option value="Kompor Gas">Kompor Gas</option>
-              <option value="Magic Com">Magic Com</option>
-              <option value="Kipas Angin">Kipas Angin</option>
+              <option value="utama">UNDIAN UTAMA</option>
+              <option value="doorprize">DOORPIZE</option>
             </select>
           </center>
 
@@ -185,6 +252,7 @@ var names = new Array('Barbara McFell',
                       );
 
 var winnerList = new Array();
+var clickedPrize = -1;
 
 function reset(){
   // re-enable go button
@@ -200,6 +268,8 @@ function reset(){
                       'Tempo McKeteketly',
                       'Maonga Irpaae',
                       'Jose Tunisia',
+                      'Bambang',
+                      'Jono',
                       );
     for(var i in names){
       name = names[i];
@@ -209,6 +279,29 @@ function reset(){
     }
   }
   $("#namesbox").val(namesbreak);
+}
+
+function showCategory(){
+  var categorySelected = $('#prizes').val();
+
+  const prizes = document.querySelectorAll(".card");
+  if(categorySelected == "utama"){
+    for(var i = 0; i < prizes.length; i++){
+      if(i < 6){
+        prizes[i].style.display = "block";
+      }else{
+        prizes[i].style.display = "none";
+      }
+    }
+  }else if(categorySelected == "doorprize"){
+    for(var i = 0; i < prizes.length; i++){
+      if(i >= 6){
+        prizes[i].style.display = "block";
+      }else{
+        prizes[i].style.display = "none";
+      }
+    }
+  }
 }
 
 function gup(para)
@@ -249,7 +342,7 @@ function namelist(){
         $("#popdown").show();
         $("#values").hide();
         $("#names").show();
-        $("#prizes").hide();
+        // $("#prizes").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
         $('#go').hide();
@@ -261,7 +354,7 @@ function hadiahlist(){
         $('#headline').text('Pilih Hadiah');
         $("#popdown").show();
         $("#values").hide();
-        $("#prizes").show();
+        // $("#prizes").show();
         $("#names").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
@@ -275,7 +368,7 @@ function pemenang(){
         $('#headline').text('Undian RAT Koperasi');
         $("#popdown").show();
         $("#values").hide();
-        $("#prizes").show();
+        // $("#prizes").show();
         $("#names").hide();
         $("#winner").show();
         $('body').css({"overflow-y": "visible"});
@@ -361,6 +454,68 @@ function go(){
   //setTimeout("$('#playback').hide('slow')",11005);
 }
 
+// does the actual animation
+function acak(index){
+  clickedPrize = index;
+  $("#varnote").hide();
+  $('body').css({"overflow-y": "hidden"});
+  $('#go').attr('disabled','disabled');
+  $('#list').attr('disabled','disabled');
+  $('#save').attr('disabled','disabled');
+  $('#headline').slideUp();
+  $('#namesbox').slideDown();
+
+  var count = 1;
+  count = 1;
+  $("div").remove("#result1");
+  names = $("#namesbox").val();
+  if(document.all) { // IE
+    names=names.split("\n");
+  }
+  else { //Mozilla
+    names=names.split("\n");
+  }
+  $("#values").show();
+  $(".name").show();
+  $("#popdown").hide();
+  $("div").remove(".name");
+  $("div").remove(".extra");
+  $("#playback").html("");
+  newtop = names.length * 200 * -1;
+  $('#values').css({top: + newtop});	
+  names.sort( randOrd );
+  var fruits = new Array ( "apple", "pear", "orange", "banana" );
+  for(var i in names){
+    if (names[i] == "" || typeof(names[i]) == undefined){
+      count = count-1;
+    } else {
+      name = names[i];
+      $('#values').append('<div id=result'+count+' class=name>'+name+'</div>');
+    }
+    count = count+1;
+  }
+  for(var i in names){
+    if (names[i] == "" || typeof(names[i]) == undefined){}else{
+      name = names[i];
+      $('#values').append('<div class=name>'+name+'</div>');
+    }
+    count = count+1;
+  }
+  for(var i in names){
+    if (names[i] == "" || typeof(names[i]) == undefined){}else{
+      name = names[i];
+      $('#values').append('<div class=name>'+name+'</div>');
+    }
+    count = count+1;
+  }
+  text = $('#result1').text()
+  $('#values').animate({top: '+176'},5000);
+
+  // make it stand out
+  setTimeout("standout(text)",5000);
+  //setTimeout("$('#playback').hide('slow')",11005);
+}
+
 function standout(text){
 
         $('#result1').removeClass('name');
@@ -375,7 +530,7 @@ function standout(text){
 
         addToWinnerList();
 
-        $('#prizes').val("");
+        // $('#prizes').val("");
 }
 
 function removevictim(){
@@ -403,62 +558,38 @@ function removevictim(){
   pemenang();
 }
 
-function addToWinnerListText(){
-	// Removing victim from array and UI
-	// names = names.filter(function(){ return true});
-  // Rewriting namesbox contents
-  
-  winnerList = $("#winnerbox").val();
-
-	var winnerUpdated = winnerList + "\n" + text + '\nMendapatkan 1 buah ' + $('#prizes').find(":selected").text() + '\n';
-  
-	$('#winnerbox').val("");
-  $('#winnerbox').val(winnerUpdated);
-  //$('#result1').html("Removed");
-  //$('#result1').fadeOut(1000, function(){
-  //  $("div").remove("#result1");
-  //});
-  //$("div").remove(".name");
-  //$("div").remove(".extra");
-  //$('#headline').text( $('#headline').text() + '\nAdded to winner list.');
-}
-
 function addToWinnerList(){
-  winnerList.unshift({
-    'name' : text,
-    'prize' : $('#prizes').find(":selected").text()
-  });
+  var existedElementIndex = -1;
 
-  renderTable();
-}
-
-function renderTable(){
-  $("#winnerTable tr").remove(); 
-
-  var table = document.getElementById("winnerTable");
-  var iter = 0;
+  var iterExisted = -1;
   winnerList.forEach(element => {
-    console.log("name: " + element.name);
-    var row = table.insertRow(iter);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    cell1.innerHTML = element.name;
-    cell2.innerHTML = element.prize;
-    cell3.innerHTML = '<button onclick="deleteWinner(' + iter + ')"><i class="fa fa-trash"></i></button>';
+    iterExisted++;
+    if(element.prizeIndex == clickedPrize){
+      existedElementIndex = iterExisted;
+    }
+  });
 
-    iter++;
+  if(existedElementIndex >= 0){ // jika sudah exists
+    winnerList[existedElementIndex].name = text;
+  }else{
+    winnerList.unshift({
+      'name' : text,
+      'prizeIndex' : clickedPrize
+    });
+  }
+
+  renderPrizeAndWinner();
+  
+}
+
+function renderPrizeAndWinner(){
+  console.log(winnerList);
+  winnerList.forEach(element => {
+    const prizes = document.querySelectorAll(".card");
+    console.log(prizes[element.prizeIndex].getElementsByClassName("extraInfo"));
+    prizes[element.prizeIndex].getElementsByClassName("extraInfo")[0].innerText = element.name;
   });
 }
-
-function deleteWinner(index){
-  winnerList.splice(index, 1);
-  var table = document.getElementById("winnerTable");
-  table.deleteRow(index);
-
-  renderTable();
-}
-
 
 </script>
 

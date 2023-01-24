@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Random Name Picker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Undian Koperasi</title>
 
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/foundation.css" />
@@ -16,13 +17,28 @@
 #values { position:relative;font-size:400%;text-align:center;margin: 0 auto;z-index:0; }
 .name { overflow:hidden;display:block; }
 #names { display:none;padding:5px; }
-#namesbox { min-height:400px;font-size:32px;color:#333;resize:none;border:1px solid #F39C12; }
+#namesbox { min-height:400px;font-size:20px;color:#333;resize:none;border:1px solid #F39C12; }
 .extra { font-size:16px;margin-top:20px; }
 #winnerbox { min-height:600px;font-size:32px;color:#333;resize:none;border:1px solid #F39C12; }
 #result1 { background:#000;color:#fbe34b;padding:20px;z-index:10;margin-top:-150px; }
 body { background:#F1C40F url(img/bg-noise-orange.png); }
 #varnote { font-size:40px;text-align:center;padding:30px; }
 .copyright { font-size:11px;font-family:Tahoma;color:#9B59B6; }
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 </style>
 
 </head>
@@ -36,8 +52,8 @@ body { background:#F1C40F url(img/bg-noise-orange.png); }
 			<li><button class="button" id="list" onclick="namelist();">Daftar Nama</button></li>
 			<!--<li><button class="button" id="save" onclick="save();">Save &amp; Update</button></li>-->
 			<li><button class="button" id="price" onclick="hadiahlist();">Daftar Hadiah</button></li>
-			<li><button class="success button" id="go" onclick="go();">Mulai!</button></li>
-			<li><button class="button" id="pemenang" onclick="pemenang();">Daftar Pemenang</button></li>
+			<!-- <li><button class="success button" id="go" onclick="go();">Mulai!</button></li> -->
+			<li><button class="button" id="pemenang" onclick="pemenang();">Undian</button></li>
     </ul>
 		</div>
 	</div>
@@ -46,26 +62,41 @@ body { background:#F1C40F url(img/bg-noise-orange.png); }
 	<div class="row">
 		<div class="large-12 columns">
 			<h3 style="text-align:center;margin-top:30px;" id="headline">Let's see who is The Lucky One?</h3>
+      <button type="button" id="print" style="display: none;" onclick="doPrint()">PRINT BUOSSSSSHHHHHHH!</button>
 			
 			<div id="varnote"><img src="img/logo.png"><div class="copyright">&copy; Coded by <strong>Heiswayi Nrird</strong>, June 2013</div></div>
 			
       <div id="popdown">
-      <div id="names" class="inbox"><textarea name="namesbox" id="namesbox"></textarea></div>
-
-      <select name="prizes" id="prizes">
-        <option value="Kompor Gas 2 Tungku">Kompor Gas</option>
-        <option value="Dispenser">Dispenser</option>
-        <option value="Kipas Angin">Kipas Angin</option>
-        <option value="SEPEDA MOTOR HONDA REVO">SEPEDA MOTOR HONDA REVO</option>
-        <option value="Sepeda Gunung MTB">Sepeda Gunung MTB</option>
-        <option value="Sepeda Gunung MTB">Sepeda Gunung MTB</option>
-        <option value="TV 32 Inch">TV 32 Inch</option>
-        <option value="Kulkas 1 Pintu">Kulkas 1 Pintu</option>
-        <option value="Mesin Cuci">Mesin Cuci</option>
-      </select>
+        <div id="names" class="inbox"><textarea name="namesbox" id="namesbox"></textarea></div>
 
 
-      <div id="winner" class="inbox"><textarea name="winnerbox" id="winnerbox"></textarea></div>
+          <!-- <div id="winner" class="inbox"><textarea name="winnerbox" id="winnerbox"></textarea></div> -->
+          <div id="winner" class="inbox">
+            <table id="winnerTable">
+              <tr>
+                <th style="width:47%">Anggota</th>
+                <th style="width:47%">Hadiah</th>
+                <th style="width:6%">Aksi</th>
+              </tr>
+              
+            </table>
+          </div>
+
+
+          <select name="prizes" id="prizes" style="margin-top:30px">
+            <option value="Sepeda Motor Honda Beat">Sepeda Motor Honda Beat</option>
+            <option value="Sepeda I">Sepeda I</option>
+            <option value="Sepeda II">Sepeda II</option>
+            <option value="Sepeda III">Sepeda III</option>
+            <option value="Kulkas">Kulkas</option>
+            <option value="TV LED">TV LED</option>
+            <option value="Line">============</option>
+            <option value="Kompor Gas">Kompor Gas</option>
+            <option value="Magic Com">Magic Com</option>
+            <option value="Kipas Angin">Kipas Angin</option>
+          </select>
+
+          <center style="margin-top:10px"><button class="success button" style="width:600px" id="go" onclick="go();">Mulai!</button></center>
 
       </div> <!--popdown-->
 
@@ -285,6 +316,8 @@ function save(){
         $('#headline').text('The name list is saved and updated.').fadeIn();
         $("#names").show();
         $('#namesbox').attr('disabled','disabled');
+
+        $("#print").hide();
 }
 
 function namelist(){
@@ -297,17 +330,21 @@ function namelist(){
         $("#prizes").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
+
+        $("#print").hide();
 }
 function hadiahlist(){
         $("#varnote").hide();
         $('#namesbox').removeAttr('disabled','disabled');
-        $('#headline').text('Daftar Hadiah');
+        $('#headline').text('Pilih Hadiah');
         $("#popdown").show();
         $("#values").hide();
         $("#prizes").show();
         $("#names").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
+
+        $("#print").hide();
 }
 function pemenang(){
         $("#varnote").hide();
@@ -315,10 +352,19 @@ function pemenang(){
         $('#headline').text('Daftar Pemenang');
         $("#popdown").show();
         $("#values").hide();
-        $("#prizes").hide();
+        $("#prizes").show();
         $("#names").hide();
         $("#winner").show();
         $('body').css({"overflow-y": "visible"});
+
+        $("#print").show();
+}
+
+function doPrint(){
+  w=window.open();
+  w.document.write($("#winner").html());
+  w.print();
+  w.close();
 }
 
 // does the actual animation
@@ -330,6 +376,8 @@ function go(){
   $('#save').attr('disabled','disabled');
   $('#headline').slideUp();
   $('#namesbox').slideDown();
+
+  $("#print").hide();
 
   var count = 1;
   count = 1;
@@ -424,9 +472,11 @@ function removevictim(){
   $('#headline').text('OK, done! Let\'s see who is next? Just click "GO!" button for next roll.');
 
   //addToWinnerList();
+  console.log("test");
+  pemenang();
 }
 
-function addToWinnerList(){
+function addToWinnerListText(){
 	// Removing victim from array and UI
 	// names = names.filter(function(){ return true});
   // Rewriting namesbox contents
@@ -446,7 +496,36 @@ function addToWinnerList(){
   //$('#headline').text( $('#headline').text() + '\nAdded to winner list.');
 }
 
+function addToWinnerList(){
+  winnerList.pop({
+    'name' : text,
+    'prize' : $('#prizes').find(":selected").text()
+  });
+
+  console.log(winnerList);
+  renderTable(text, $('#prizes').find(":selected").text());
+}
+
+function renderTable(nama, hadiah){
+  var table = document.getElementById("winnerTable");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  cell1.innerHTML = nama;
+  cell2.innerHTML = hadiah;
+  cell3.innerHTML = '<button onclick="deleteWinner()"><i class="fa fa-trash"></i></button>';
+}
+
+function deleteWinner(index){
+  winnerList.splice(index, 1);
+  var table = document.getElementById("winnerTable");
+  table.deleteRow(index);
+}
+
 </script>
+
+
 
 </body>
 </html>

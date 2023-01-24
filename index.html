@@ -92,14 +92,14 @@ tr:nth-child(even) {
 
           <select name="prizes" id="prizes" style="margin-top:30px;">
             <option value="" selected>Pilih Undian</option>
-            <option value="Line1">=====UNDIAN UTAMA=====</option>
+            <option value="">=====UNDIAN UTAMA=====</option>
             <option value="Sepeda Motor Honda Beat">Sepeda Motor Honda Beat</option>
             <option value="Sepeda I">Sepeda I</option>
             <option value="Sepeda II">Sepeda II</option>
             <option value="Sepeda III">Sepeda III</option>
             <option value="Kulkas">Kulkas</option>
             <option value="TV LED">TV LED</option>
-            <option value="Line2">=====DOORPIZE=====</option>
+            <option value="">=====DOORPIZE=====</option>
             <option value="Kompor Gas">Kompor Gas</option>
             <option value="Magic Com">Magic Com</option>
             <option value="Kipas Angin">Kipas Angin</option>
@@ -201,7 +201,7 @@ function namelist(){
         $("#prizes").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
-
+        $('#go').hide();
         $("#print").hide();
 }
 function hadiahlist(){
@@ -214,6 +214,7 @@ function hadiahlist(){
         $("#names").hide();
         $("#winner").hide();
         $('body').css({"overflow-y": "visible"});
+        $('#go').show();
 
         $("#print").hide();
 }
@@ -227,7 +228,7 @@ function pemenang(){
         $("#names").hide();
         $("#winner").show();
         $('body').css({"overflow-y": "visible"});
-
+        $('#go').show();
         $("#print").show();
 }
 

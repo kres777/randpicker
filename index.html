@@ -19,7 +19,13 @@
 #values { position:relative;font-size:400%;text-align:center;margin: 0 auto;z-index:0; }
 .name { overflow:hidden;display:block; }
 #names { display:none;padding:5px; }
-#namesbox { min-height:400px;font-size:20px;color:#333;resize:none;border:1px solid #F39C12; }
+#namesbox { min-height: 400px;
+  font-size: 20px;
+  color: #333;
+  resize: none;
+  border: 1px solid #F39C12;
+  background: bottom;
+  border-radius: 10px; }
 .extra { font-size:16px;margin-top:20px; }
 #winnerbox { min-height:600px;font-size:32px;color:#333;resize:none;border:1px solid #F39C12; }
 #result1 { background:#000;color:#fbe34b;padding:20px;z-index:10;margin-top:-150px; }
@@ -92,12 +98,13 @@ tr:nth-child(even) {
                   </div>
                 </div>
               </div>
-              <div class="card">
+              <!-- kulkas -->
+              <div class="card"> 
                 <div class="wrapper">
-                  <div class="colorProd" style="background-color: #153a82;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/seli.png');"></div>
+                  <div class="colorProd" style="background-color: #1d1d1d;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/kulkas.png');"></div>
                   <div class="infoProd">
-                    <p class="nombreProd">SEPEDA LIPAT</p>
+                    <p class="nombreProd">Kulkas</p>
                     <p class="extraInfo">????</p>
                     <div class="actions">
                       <div class="bakuretsu_icono action aFavs" onclick="acak(1)">
@@ -107,12 +114,13 @@ tr:nth-child(even) {
                   </div>
                 </div>
               </div>
+              <!-- TV 24" -->
               <div class="card">
                 <div class="wrapper">
-                  <div class="colorProd" style="background-color: #3f4a69;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/mtb.png');"></div>
+                  <div class="colorProd" style="background-color: #456f1b;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/tv_led.png');"></div>
                   <div class="infoProd">
-                    <p class="nombreProd">Sepeda Gunung</p>
+                    <p class="nombreProd">TV 24"</p>
                     <p class="extraInfo">????</p>
                     <div class="actions">
                       <div class="bakuretsu_icono action aFavs" onclick="acak(2)">
@@ -124,10 +132,10 @@ tr:nth-child(even) {
               </div>
               <div class="card">
                 <div class="wrapper">
-                  <div class="colorProd" style="background-color: #3f4a69;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/mtb.png');"></div>
+                  <div class="colorProd" style="background-color: #153a82;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/seli.png');"></div>
                   <div class="infoProd">
-                    <p class="nombreProd">Sepeda Gunung</p>
+                    <p class="nombreProd">SEPEDA 1</p>
                     <p class="extraInfo">????</p>
                     <div class="actions">
                       <div class="bakuretsu_icono action aFavs" onclick="acak(3)">
@@ -139,10 +147,10 @@ tr:nth-child(even) {
               </div>
               <div class="card">
                 <div class="wrapper">
-                  <div class="colorProd" style="background-color: #1d1d1d;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/kulkas.png');"></div>
+                  <div class="colorProd" style="background-color: #3f4a69;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/mtb.png');"></div>
                   <div class="infoProd">
-                    <p class="nombreProd">Kulkas</p>
+                    <p class="nombreProd">SEPEDA 2</p>
                     <p class="extraInfo">????</p>
                     <div class="actions">
                       <div class="bakuretsu_icono action aFavs" onclick="acak(4)">
@@ -154,10 +162,10 @@ tr:nth-child(even) {
               </div>
               <div class="card">
                 <div class="wrapper">
-                  <div class="colorProd" style="background-color: #456f1b;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/tv_led.png');"></div>
+                  <div class="colorProd" style="background-color: #3f4a69;"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/mesin_cuci.webp');"></div>
                   <div class="infoProd">
-                    <p class="nombreProd">TV LED</p>
+                    <p class="nombreProd">MESIN CUCI</p>
                     <p class="extraInfo">????</p>
                     <div class="actions">
                       <div class="bakuretsu_icono action aFavs" onclick="acak(5)">
@@ -167,7 +175,6 @@ tr:nth-child(even) {
                   </div>
                 </div>
               </div>
-
               <div class="card">
                 <div class="wrapper">
                   <div class="colorProd" style="background-color: #1b6f44;"></div>
@@ -217,10 +224,10 @@ tr:nth-child(even) {
           </div>
 
           <center style="padding-bottom:30px">
-            <select name="prizes" id="prizes" onchange="showCategory();" onfocus="this.selectedIndex = 0;" style="width: 600px;">
+            <select name="prizes" id="prizes" onchange="showCategory();" onfocus="this.selectedIndex = 0;" style="width: 600px; padding: 8px;">
               <option value="" selected>Pilih Undian</option>
-              <option value="utama">UNDIAN UTAMA</option>
-              <option value="doorprize">DOORPIZE</option>
+              <option value="utama">~ Undian Utama ~</option>
+              <option value="doorprize">~ Doorprize ~</option>
             </select>
           </center>
 
@@ -355,7 +362,7 @@ function save(){
 function namelist(){
         $("#varnote").hide();
         $('#namesbox').removeAttr('disabled','disabled');
-        $('#headline').text('Configure name list');
+        $('#headline').text('Daftar Anggota');
         $("#popdown").show();
         $("#values").hide();
         $("#names").show();
@@ -477,7 +484,7 @@ function acak(index){
   var categorySelected = $('#prizes').val();
   console.log(categorySelected);
   if(categorySelected == ""){
-    alert("pilih Kategori Undian.");
+    alert("Silahkan Pilih Kategori Undian.");
     return;
   }
 

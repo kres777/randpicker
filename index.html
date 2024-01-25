@@ -443,7 +443,7 @@ function showCategory(){
   if(categorySelected == "utama"){
     setMembersToAll();
     for(var i = 0; i < prizes.length; i++){
-      if(i < 6){
+      if(i < 7){
         prizes[i].style.display = "block";
       }else{
         prizes[i].style.display = "none";
@@ -452,7 +452,7 @@ function showCategory(){
   }else if(categorySelected == "doorprize"){
     reset();
     for(var i = 0; i < prizes.length; i++){
-      if(i >= 6){
+      if(i >= 7){
         prizes[i].style.display = "block";
       }else{
         prizes[i].style.display = "none";

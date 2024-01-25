@@ -14,6 +14,7 @@
   <script src="js/vendor/custom.modernizr.js"></script>
   <script src="js/jquery-latest.min.js"></script>
   <script src="js/anggota.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 
 <style>
 #values { position:relative;font-size:400%;text-align:center;margin: 0 auto;z-index:0; }
@@ -133,7 +134,7 @@ tr:nth-child(even) {
               <div class="card">
                 <div class="wrapper">
                   <div class="colorProd" style="background-color: #153a82;"></div>
-                  <div class="imgProd" style="background-image: url('img/Hadiah/seli.png');"></div>
+                  <div class="imgProd" style="background-image: url('img/Hadiah/mtb.png');"></div>
                   <div class="infoProd">
                     <p class="nombreProd">SEPEDA 1</p>
                     <p class="extraInfo">????</p>
@@ -691,7 +692,7 @@ function standout(text){
         $('#result1').removeClass('name');
         $('.name').animate({opacity: .25});
         $('#result1').animate({height: '+=130px'});
-        $('#result1').append('<div class="extra"><a class="alert button" href="#" onClick="removevictim();">Hapus</a></div>');
+        $('#result1').append('<div class="extra"><a class="alert button" href="#" onClick="removevictim();">Simpan</a></div>');
         // $('#go').removeAttr('disabled','disabled');
         $('#list').removeAttr('disabled','disabled');
         $('#save').removeAttr('disabled','disabled');
@@ -749,7 +750,36 @@ function addToWinnerList(){
   }
 
   renderPrizeAndWinner();
-  
+  duration = 15;
+  if(clickedPrize > 0){
+    duration = 1;
+  }
+  const end = Date.now() + duration * 1000;
+
+  // go Buckeyes!
+  const colors = ["#bb0000", "#ffffff"];
+
+  (function frame() {
+    confetti({
+      particleCount: 4,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+
+    confetti({
+      particleCount: 4,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
 }
 
 function renderPrizeAndWinner(){
